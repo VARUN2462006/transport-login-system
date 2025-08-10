@@ -1,0 +1,272 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  color: #222;
+  /* Put 'sander-yigin-ki19VJAGh6w-unsplash.jpg' in this folder! */
+  background-image: url("sander-yigin-ki19VJAGh6w-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #fffefe;
+}
+
+.navbar {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84vw;
+  max-width: 900px;
+  height: 76px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.09);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 38px;
+  z-index: 100;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+body.dark-mode .navbar {
+  background: rgba(30, 32, 46, 0.67);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.navbar-title {
+  flex: 1;
+  text-align: center;
+  color: #264476;
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0;
+  transition: color 0.3s;
+}
+
+body.dark-mode .navbar-title {
+  color: #f9fafc;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 28px;
+  cursor: pointer;
+}
+.menu-icon .bar {
+  height: 4px;
+  width: 100%;
+  margin: 2px 0;
+  background: #264476;
+  border-radius: 3px;
+  transition: background 0.3s;
+}
+body.dark-mode .menu-icon .bar {
+  background: #e9f1ff;
+}
+
+/* Scrollable dropdown menu */
+.menu-links {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 290px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: rgba(255,255,255,0.82);
+  border-radius: 18px;
+  padding: 24px 20px;
+  box-shadow: 0 8px 32px rgba(60,70,90,0.11);
+  flex-direction: column;
+  font-size: 15px;
+  z-index: 101;
+  animation: fadeInMenu 0.25s;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.3) transparent;
+}
+@keyframes fadeInMenu { from { opacity: 0; } to { opacity: 1; } }
+.menu-links.active { display: flex; }
+
+.menu-links::-webkit-scrollbar {
+  width: 6px;
+}
+.menu-links::-webkit-scrollbar-track {
+  background: transparent;
+}
+.menu-links::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 3px;
+}
+.menu-links::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+body.dark-mode .menu-links {
+  background: rgba(30, 32, 46, 0.92);
+  color: #f3f5fb;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+body.dark-mode .menu-links::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+body.dark-mode .menu-links::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Space below toggle so it's not jammed at bottom */
+.dark-mode-section {
+  padding-bottom: 10px;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 16px;
+  color: inherit;
+}
+
+/* Put 2.png light logo and 1.png dark logo in the correct folders! */
+.profile-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-image: url("2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid #264476;
+  transition: background-image 0.3s, border-color 0.3s;
+}
+body.dark-mode .profile-photo {
+  background-image: url("1.png");
+  border-color: #4587ff;
+}
+.profile-name {
+  font-weight: 700;
+  font-size: 1.18rem;
+  color: inherit;
+}
+
+.contact-section h3, .dark-mode-section h3 {
+  margin: 10px 0 7px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: inherit;
+}
+.contact-section nav a {
+  display: block;
+  color: #264476;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 7px 0;
+  border-radius: 7px;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.18s, color 0.18s;
+}
+.contact-section nav a:hover {
+  background: #e9f6ff;
+  color: #0088cc;
+}
+body.dark-mode .contact-section nav a {
+  color: #aacafe;
+}
+body.dark-mode .contact-section nav a:hover {
+  background: #233c5b;
+  color: #81c7fd;
+}
+
+.contact-section p {
+  margin: 6px 0;
+  font-size: 0.97rem;
+}
+.contact-section a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Dark Mode Toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+.switch input {
+  opacity: 0;
+  width: 0; height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #000000;
+  border-radius: 25px;
+  transition: background 0.2s;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: .4s;
+}
+input:checked + .slider {
+  background: #1e366d;
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+  background: #a9e3ff;
+}
+
+.menu-links hr {
+  border: none;
+  border-top: 1px solid #e2e9f6;
+  margin: 14px 0;
+  background: transparent;
+}
+
+/* Responsive styles for navbar/menu */
+@media (max-width: 700px) {
+  .navbar {
+    width: 97vw;
+    padding: 0 12px;
+    top: 12px;
+  }
+  .menu-links {
+    left: 0;
+    width: 94vw;
+    padding: 14px 6px 12px 6px;
+  }
+  .navbar-title {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .navbar {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+  }
+  .menu-links {
+    top: 60px;
+  }
+}

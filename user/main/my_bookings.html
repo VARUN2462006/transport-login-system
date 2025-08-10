@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My Bookings</title>
+<link rel="stylesheet" href="main.css" />
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fa;
+    margin: 0;
+    padding-top: 90px;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 25px;
+    color: #264476;
+    font-size: 2rem;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    padding: 12px 22px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s ease;
+  }
+
+  .btn-add {
+    background: #264476;
+    color: #fff;
+  }
+  .btn-add:hover { background: #1a2f59; }
+
+  .btn-clear {
+    background: #d9534f;
+    color: #fff;
+  }
+  .btn-clear:hover { background: #b52b27; }
+
+  .note {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>My Bookings</h2>
+  
+  <div class="actions">
+    <a class="btn btn-add" href="booking.html">➕ Add New Booking</a>
+    <button class="btn btn-clear" onclick="clearHistory()">🗑 Clear All History</button>
+  </div>
+
+  <p class="note">Here you can manage your bookings. To add a new booking, click the "Add New Booking" button.  
+  To delete all your past bookings, use "Clear All History".</p>
+</div>
+
+<script>
+function clearHistory(){
+  if(confirm("Are you sure you want to clear ALL booking history? This cannot be undone.")) {
+    window.location = "my_bookings_clear.php";
+  }
+}
+</script>
+
+</body>
+</html>

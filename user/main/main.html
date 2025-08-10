@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Main Dashboard</title>
- 
+  <!-- main.css must be in the same folder as main.html -->
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
   <div class="navbar">
     <div class="menu">
-      <div class="menu-icon" id="menu-icon">
-        <!-- Hamburger lines -->
+      <div class="menu-icon" id="menu-icon" aria-label="Menu" role="button" tabindex="0">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -21,23 +20,17 @@
           <div class="profile-photo" id="profile-photo"></div>
           <div class="profile-name" id="profile-name"></div>
         </div>
-
         <hr />
-
         <div class="contact-section">
-          
           <nav>
-            <a href="../bookings/booking.html">Book a Vehicle</a><br />
-            <a href="my_bookings.html">My Bookings</a><br />
-            <a href="settings.html">Settings</a><br />
-            <a href="../php/logout.php">Logout</a><br />
+            <a href="booking.html">Book a Vehicle</a>
+            <a href="my_bookings.html">My Bookings</a>
+          
           </nav>
           <p>📞 <a href="#" id="phone-link">+91 9405220xyz</a></p>
           <p>📧 <a href="#" id="email-link">athawalevarun1@gmail.com</a></p>
         </div>
-
         <hr />
-
         <div class="dark-mode-section">
           <h3>Dark / Light Mode</h3>
           <label class="switch">
@@ -45,14 +38,11 @@
             <span class="slider"></span>
           </label>
         </div>
-
         <hr />
       </div>
     </div>
-
     <h1 class="navbar-title" id="welcome-message">Welcome!</h1>
   </div>
-
   <script src="main.js"></script>
 </body>
 </html>
