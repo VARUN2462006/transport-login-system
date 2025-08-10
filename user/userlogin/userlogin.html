@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login</title>
+    <link rel="stylesheet" href="userlogin.css">
+</head>
+<body>
+    <div class="container">
+        <h2>User Login</h2>
+        <form action="userlogin.php" method="POST">
+            
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter your username" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="register.html">Create New Account</a></p>
+        <p><a href="forgotpassword.html">Forgot Password?</a></p>
+    </div>
+</body>
+</html>

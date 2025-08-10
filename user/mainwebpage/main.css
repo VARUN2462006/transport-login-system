@@ -165,7 +165,7 @@ body.dark-mode .menu-links::-webkit-scrollbar-thumb:hover {
 }
 
 body.dark-mode .profile-photo {
-  background-image: url('1.png'); /* <-- Add your DARK logo image URL here */
+  background-image: url('../mainwebpage/1.png'); /* <-- Add your DARK logo image URL here */
   border-color: #0a66c2;
 }
 
