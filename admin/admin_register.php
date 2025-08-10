@@ -7,24 +7,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email    = trim($_POST['email'] ?? '');
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $check = $conn->prepare("SELECT id FROM users WHERE email=?");
-    $check->bind_param("s", $email);
-    $check->execute();
-    $check->store_result();
-
-    if ($check->num_rows > 0) {
-        $error = "Email already registered.";
+    // Check if username and email entered
+    if (!$username || !$email) {
+        $error = "Please fill out all fields.";
     } else {
-        $stmt = $conn->prepare("INSERT INTO users (username, email, password, is_admin) VALUES (?,?,?,1)");
-        $stmt->bind_param("sss", $username, $email, $password);
-        if ($stmt->execute()) {
-            $success = "New admin was created.";
+        // Check for existing admin email
+        $check = $conn->prepare("SELECT id FROM admin WHERE email=?");
+        $check->bind_param("s", $email);
+        $check->execute();
+        $check->store_result();
+
+        if ($check->num_rows > 0) {
+            $error = "Admin email already registered.";
         } else {
-            $error = "Error creating admin.";
+            $stmt = $conn->prepare("INSERT INTO admin (username, email, password) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $username, $email, $password);
+            if ($stmt->execute()) {
+                // ✅ Redirect to login after success
+                header("Location: admin_login.php?registered=1");
+                exit();
+            } else {
+                $error = "Error creating admin.";
+            }
+            $stmt->close();
         }
-        $stmt->close();
+        $check->close();
     }
-    $check->close();
 }
 ?>
 <!DOCTYPE html>
@@ -38,8 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="auth-container">
     <h2>Add New Admin</h2>
     <?php 
-    if (!empty($error))   echo "<div class='error'>$error</div>";
-    if (!empty($success)) echo "<div class='success'>$success</div>";
+    if (!empty($error)) echo "<div class='error'>$error</div>"; 
     ?>
     <form method="post">
         <input type="text" name="username" placeholder="Full Name" required>

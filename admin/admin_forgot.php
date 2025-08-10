@@ -2,7 +2,7 @@
 require '../db_connect.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
-    // In real app: generate token & send email
+    // You'd look up the admin table for the email
     $success = "If this email exists, a reset link will be sent.";
 }
 ?>

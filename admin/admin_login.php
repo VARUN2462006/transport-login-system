@@ -6,20 +6,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    $stmt = $conn->prepare("SELECT id, username, password, is_admin FROM users WHERE email=? LIMIT 1");
+    $stmt = $conn->prepare("SELECT id, username, password FROM admin WHERE email=? LIMIT 1");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $res = $stmt->get_result();
 
     if ($row = $res->fetch_assoc()) {
-        if (password_verify($password, $row['password']) && $row['is_admin'] == 1) {
+        if (password_verify($password, $row['password'])) {
             $_SESSION['admin_id']   = $row['id'];
             $_SESSION['admin_name'] = $row['username'];
             $_SESSION['is_admin']   = true;
             header("Location: admin_dashboard.php");
             exit();
         } else {
-            $error = "Invalid credentials or not an admin.";
+            $error = "Invalid credentials.";
         }
     } else {
         $error = "No admin found or wrong credentials.";

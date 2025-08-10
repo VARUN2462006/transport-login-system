@@ -16,39 +16,45 @@ $today = date("F j, Y");
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <style>
-    /* A few dashboard-specific touch-ups */
-    .stats-grid { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;}
+    /* Compact dashboard tweaks */
+    .admin-container { 
+        max-width: 900px;
+        padding: 25px;
+        margin: 30px auto;
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 0.3em; }
+    .stats-grid { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
     .stat-card {
-        background: linear-gradient(120deg, #fff6e0 60%, #e3ebff 100%);
+        background: #fff;
         color: #222;
-        box-shadow: 0 4px 24px 0 rgba(24,34,58,0.07);
-        border-radius: 15px;
-        padding: 30px 35px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        border-radius: 10px;
+        padding: 18px 20px;
         text-align: center;
-        margin: 0 10px 18px 0;
-        min-width: 210px;
-        flex: 1 0 260px;
+        flex: 1 0 200px;
+        min-width: 180px;
     }
-    .stat-card h4 {font-size: 1.13rem; margin-bottom: 1.1rem;}
-    .stat-card .icon {font-size: 2.5rem; margin-bottom:10px; opacity:.9;}
-    .fs-3 { font-size: 2.2rem; font-weight: 700;}
-    @media (max-width: 899px) {
-        .stats-grid {flex-direction:column;gap:12px;}
-        .stat-card {margin:0 0 15px;}
+    .stat-card h4 { font-size: 1rem; margin-bottom: 6px; }
+    .stat-card .icon { font-size: 1.8rem; margin-bottom: 4px; opacity: 0.85; }
+    .fs-3 { font-size: 1.4rem; font-weight: 600; }
+    .dashboard-nav { margin-bottom: 20px; }
+    .dashboard-nav .btn { font-size: 0.85rem; padding: 7px 12px; }
+    @media (max-width: 768px) {
+        .stat-card { padding: 14px; }
+        .fs-3 { font-size: 1.2rem; }
     }
-    .dashboard-nav { margin-bottom:32px; }
     </style>
 </head>
 <body>
 <div class="admin-container">
-    <h1 style="margin-bottom:0.4em;">Welcome, <?= htmlspecialchars($_SESSION['admin_name']) ?></h1>
-    <div style="text-align:center;font-size:1.04rem;opacity:.74;margin-bottom:30px;">
-        <span><?= $today ?></span>
+    <h1>Welcome, <?= htmlspecialchars($_SESSION['admin_name']) ?></h1>
+    <div style="text-align:center;font-size:0.9rem;opacity:.7;margin-bottom:20px;">
+        <?= $today ?>
     </div>
-    <div class="dashboard-nav">
-        <a href="manage_bookings.php" class="btn">📚 Manage Bookings</a>
-        <a href="manage_users.php" class="btn">👤 Manage Users</a>
-        <a href="manage_vehicles.php" class="btn">🚚 Manage Vehicles</a>
+    <div class="dashboard-nav" style="text-align:center;">
+        <a href="manage_bookings.php" class="btn">📚 Bookings</a>
+        <a href="manage_users.php" class="btn">👤 Users</a>
+        <a href="manage_vehicles.php" class="btn">🚚 Vehicles</a>
         <a href="logout.php" class="btn logout">🚪 Logout</a>
     </div>
     <div class="stats-grid">
@@ -65,7 +71,7 @@ $today = date("F j, Y");
         <div class="stat-card">
             <div class="icon" style="color:#3ec27e;">₹</div>
             <h4>Total Revenue</h4>
-            <div class="fs-3" style="font-family:monospace;font-weight:800;">
+            <div class="fs-3" style="font-family:monospace;">
                 ₹<?= number_format(floatval($totalRevenue), 2) ?>
             </div>
         </div>
