@@ -1,0 +1,117 @@
+/* Body Background with Deep, Vibrant Gradient Animation */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #530032, #342053,#68217A, #1b0035);
+    background-size: 500% 500%;
+    animation: gradientShift 12s ease infinite;
+    color: #fff;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 50%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Login Container - Glassmorphism + Glow */
+.login-container {
+    width: 360px;
+    margin: 100px auto;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    text-align: center;
+    border: 2px solid rgba(255,255,255,0.15);
+    animation: fadeIn 1.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Title Gradient Text */
+.login-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    background: linear-gradient(90deg, #ffecd2, #fcb69f, #ff758c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Input Styles */
+.login-container input {
+    width: 100%;
+    padding: 12px 8px;
+    margin: 12px 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.login-container input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.login-container input:focus {
+    border-color: #00ffc6;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px #00ffc6;
+}
+
+/* Button with Eye-Catching Colors */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff512f, #f09819, #ff512f);
+    background-size: 200% 200%;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    animation: pulseGlow 3s infinite alternate;
+}
+
+.login-container button:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 18px rgba(255, 105, 105, 0.5);
+}
+
+/* Glow Animation */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 8px rgba(255,255,255,0.3); }
+    100% { box-shadow: 0 0 18px rgba(255,255,255,0.6); }
+}
+
+/* Links / Options */
+.options {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.options a {
+    color: #00ffc6;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.options a:hover {
+    text-shadow: 0 0 8px #00ffc6;
+    color: #fff;
+}
